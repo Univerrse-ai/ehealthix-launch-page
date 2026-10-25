@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ehealthix Coming Soon</title>
+<meta name="description" content="ehealthix: family health, connected. Coming soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap">
+<style>
+/* Layout: one dark screen, brand centered, blue light falling in from both edges. Single dark look by choice. */
+:root {
+  --ground: #03060D;
+  --edge: rgba(43, 98, 214, 0.30);
+  --halo: rgba(24, 73, 169, 0.22);
+  --ink: #FFFFFF;
+  --muted: #C9D6F2;
+  --coral: #E8765A;
+  --font: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  overflow: hidden;
+}
+.stage {
+  position: relative;
+  height: 100%;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 48px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--edge) 0%, rgba(43,98,214,.10) 4%, transparent 14%, transparent 86%, rgba(43,98,214,.10) 96%, var(--edge) 100%),
+    radial-gradient(ellipse 60% 45% at 50% 50%, var(--halo), transparent 70%);
+  animation: breathe 7s ease-in-out infinite;
+}
+@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: .72; } }
+.brand { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(16px, 2.6vw, 28px); }
+.lockup { display: flex; align-items: center; gap: clamp(10px, 1.6vw, 20px); }
+.lockup svg { width: clamp(52px, 9vw, 112px); height: auto; }
+h1 {
+  margin: 0;
+  font-size: clamp(46px, 8.4vw, 104px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.tagline {
+  margin: 0;
+  font-size: clamp(11px, 1.4vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  padding-left: 0.38em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.soon {
+  position: relative;
+  margin: clamp(72px, 14vh, 160px) 0 0;
+  font-size: clamp(34px, 5.4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 18px rgba(255,255,255,.55), 0 0 42px rgba(120,160,255,.35);
+}
+@media (prefers-reduced-motion: reduce) { .stage::before { animation: none; } }
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+<main class="stage">
+  <div class="brand">
+    <div class="lockup">
+      <svg viewBox="0 0 120 120" role="img" aria-label="ehealthix logo">
+        <path d="M92 60 A32 32 0 1 0 82.6 82.6" fill="none" stroke="var(--ink)" stroke-width="14" stroke-linecap="round"/>
+        <path d="M28 60 H92" fill="none" stroke="var(--ink)" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="96" cy="84" r="8" fill="var(--coral)"/>
+      </svg>
+      <h1>ehealthix</h1>
+    </div>
+    <p class="tagline">Family health, connected</p>
+  </div>
+  <p class="soon">Coming Soon</p>
+</main>
+</body>
+</html>
