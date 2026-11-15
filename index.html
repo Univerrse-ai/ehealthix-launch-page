@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -98,5 +98,447 @@ h1 {
   </div>
   <p class="soon">Coming Soon</p>
 </main>
+</body>
+</html> -->
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ehealthix Coming Soon</title>
+<meta name="description" content="ehealthix: family health, connected. Coming soon. Join the early-access list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap">
+<style>
+/* Layout: one dark screen, brand centered, blue light falling in from both edges. Single dark look by choice. */
+:root {
+  --ground: #03060D;
+  --edge: rgba(43, 98, 214, 0.30);
+  --halo: rgba(24, 73, 169, 0.22);
+  --ink: #FFFFFF;
+  --muted: #C9D6F2;
+  --coral: #E8765A;
+  --blue: #1849A9;
+  --font: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  /* was overflow: hidden; vertical scroll is allowed so the form never gets cut off on short phones */
+  overflow-x: hidden;
+}
+.stage {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 48px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--edge) 0%, rgba(43,98,214,.10) 4%, transparent 14%, transparent 86%, rgba(43,98,214,.10) 96%, var(--edge) 100%),
+    radial-gradient(ellipse 60% 45% at 50% 50%, var(--halo), transparent 70%);
+  animation: breathe 7s ease-in-out infinite;
+}
+@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: .72; } }
+.brand { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(16px, 2.6vw, 28px); }
+.lockup { display: flex; align-items: center; gap: clamp(10px, 1.6vw, 20px); }
+.lockup svg { width: clamp(52px, 9vw, 112px); height: auto; }
+h1 {
+  margin: 0;
+  font-size: clamp(46px, 8.4vw, 104px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.tagline {
+  margin: 0;
+  font-size: clamp(11px, 1.4vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  padding-left: 0.38em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.soon {
+  position: relative;
+  margin: clamp(56px, 11vh, 140px) 0 0;
+  font-size: clamp(34px, 5.4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 18px rgba(255,255,255,.55), 0 0 42px rgba(120,160,255,.35);
+}
+
+/* Early-access form: sits under "Coming Soon", same type and colours */
+.early {
+  position: relative;
+  margin-top: clamp(24px, 4vh, 40px);
+  width: min(100%, 460px);
+}
+.early-lead {
+  margin: 0 0 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.early form { display: grid; gap: 10px; }
+.field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  font: 500 16px/1.2 var(--font);
+  color: var(--ink);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(201,214,242,.22);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+.field::placeholder { color: rgba(201,214,242,.55); }
+.field:focus { border-color: rgba(120,160,255,.75); background: rgba(255,255,255,.09); }
+select.field { appearance: none; -webkit-appearance: none; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
+  background-size: 6px 6px; background-repeat: no-repeat; }
+select.field option { color: #03060D; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 420px) { .row { grid-template-columns: 1fr; } }
+.btn {
+  margin-top: 4px;
+  padding: 15px 18px;
+  font: 700 16px/1 var(--font);
+  color: #FFFFFF;
+  background: var(--coral);
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(232,118,90,.35);
+  transition: transform .15s, box-shadow .2s, opacity .2s;
+}
+.btn:hover { box-shadow: 0 0 32px rgba(232,118,90,.55); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: .6; cursor: wait; }
+.fine {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(201,214,242,.6);
+}
+.msg { margin: 10px 0 0; font-size: 14px; font-weight: 500; min-height: 1em; }
+.msg.err { color: #FFB4A3; }
+.done {
+  padding: 22px 18px;
+  border: 1px solid rgba(201,214,242,.22);
+  border-radius: 14px;
+  background: rgba(255,255,255,.05);
+}
+.done strong { display: block; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.done span { color: var(--muted); font-size: 15px; line-height: 1.5; }
+.fgroup { display: grid; gap: 4px; text-align: left; }
+.ferr { margin: 0; min-height: 0; font-size: 12.5px; font-weight: 500; color: #FFB4A3; }
+.ferr:empty { display: none; }
+.field[aria-invalid="true"] { border-color: #FF8A70; background: rgba(232,118,90,.08); }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; color: var(--muted); cursor: pointer; margin-top: 2px; }
+.consent input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--coral); flex: none; cursor: pointer; }
+.consent input[aria-invalid="true"] { outline: 2px solid #FF8A70; outline-offset: 1px; }
+.row { align-items: start; }
+.needs { border: 0; margin: 4px 0 0; padding: 0; text-align: left; }
+.needs legend { padding: 0; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: var(--muted); }
+.needs legend span { color: rgba(201,214,242,.55); font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; cursor: pointer; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-block; padding: 9px 13px; font-size: 13.5px; font-weight: 500; line-height: 1; color: var(--muted);
+  border: 1px solid rgba(201,214,242,.22); border-radius: 999px; background: rgba(255,255,255,.04); transition: all .15s; }
+.chip:hover span { border-color: rgba(201,214,242,.45); }
+.chip input:checked + span { color: #FFFFFF; background: rgba(232,118,90,.22); border-color: var(--coral); }
+.chip input:focus-visible + span { outline: 2px solid rgba(120,160,255,.75); outline-offset: 2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); border: 0; }
+
+@media (prefers-reduced-motion: reduce) { .stage::before { animation: none; } }
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+<main class="stage">
+  <div class="brand">
+    <div class="lockup">
+      <svg viewBox="0 0 120 120" role="img" aria-label="ehealthix logo">
+        <path d="M92 60 A32 32 0 1 0 82.6 82.6" fill="none" stroke="var(--ink)" stroke-width="14" stroke-linecap="round"/>
+        <path d="M28 60 H92" fill="none" stroke="var(--ink)" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="96" cy="84" r="8" fill="var(--coral)"/>
+      </svg>
+      <h1>ehealthix</h1>
+    </div>
+    <p class="tagline">Family health, connected</p>
+  </div>
+  <p class="soon">Coming Soon</p>
+
+  <section class="early" id="early-access" aria-labelledby="early-title">
+    <p class="early-lead" id="early-title">Launching first in Bengaluru.<br>Join the early-access list and we'll reach out before anyone else.</p>
+
+    <form id="early-form" novalidate>
+      <div class="fgroup">
+        <label class="sr" for="ea-name">Your name</label>
+        <input class="field" id="ea-name" name="name" type="text" autocomplete="name" placeholder="Your name *" maxlength="60" required aria-describedby="err-name">
+        <p class="ferr" id="err-name"></p>
+      </div>
+
+      <div class="row">
+        <div class="fgroup">
+          <label class="sr" for="ea-phone">WhatsApp number</label>
+          <input class="field" id="ea-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp number *" maxlength="16" required aria-describedby="err-phone">
+          <p class="ferr" id="err-phone"></p>
+        </div>
+        <div class="fgroup">
+          <label class="sr" for="ea-email">Email (optional)</label>
+          <input class="field" id="ea-email" name="email" type="email" autocomplete="email" placeholder="Email (optional)" maxlength="100" aria-describedby="err-email">
+          <p class="ferr" id="err-email"></p>
+        </div>
+      </div>
+
+      <div class="fgroup">
+        <label class="sr" for="ea-caring">Who are you caring for?</label>
+        <select class="field" id="ea-caring" name="caring_for" required aria-describedby="err-caring">
+          <option value="" selected disabled>Who are you caring for? *</option>
+          <option>Mother</option>
+          <option>Father</option>
+          <option>Both parents</option>
+          <option>Grandparent</option>
+          <option>Spouse</option>
+          <option>Other family member</option>
+        </select>
+        <p class="ferr" id="err-caring"></p>
+      </div>
+
+      <div class="row">
+        <div class="fgroup">
+          <label class="sr" for="ea-area">Where do your parents live?</label>
+          <select class="field" id="ea-area" name="parents_area" required aria-describedby="err-area">
+            <option value="" selected disabled>Parents live *</option>
+            <option>In Bengaluru</option>
+            <option>Outside Bengaluru</option>
+          </select>
+          <p class="ferr" id="err-area"></p>
+        </div>
+        <div class="fgroup">
+          <label class="sr" for="ea-age">Their age (optional)</label>
+          <select class="field" id="ea-age" name="parent_age" aria-describedby="err-age">
+            <option value="" selected>Their age (optional)</option>
+            <option>Under 60</option>
+            <option>60 to 69</option>
+            <option>70 to 79</option>
+            <option>80 or above</option>
+          </select>
+          <p class="ferr" id="err-age"></p>
+        </div>
+      </div>
+
+      <div class="fgroup">
+        <label class="sr" for="ea-live">Where do you live?</label>
+        <select class="field" id="ea-live" name="you_live" required aria-describedby="err-live">
+          <option value="" selected disabled>Where do you live? *</option>
+          <option>Same home as them</option>
+          <option>Same city, different home</option>
+          <option>Different city in India</option>
+          <option>Outside India</option>
+        </select>
+        <p class="ferr" id="err-live"></p>
+      </div>
+
+      <div class="fgroup">
+        <label class="sr" for="ea-wear">Does your parent use a smartwatch or fitness band?</label>
+        <select class="field" id="ea-wear" name="wearable" aria-describedby="err-wear">
+          <option value="" selected>Smartwatch or fitness band? (optional)</option>
+          <option>Yes, they use one</option>
+          <option>No</option>
+          <option>Planning to get one</option>
+        </select>
+        <p class="ferr" id="err-wear"></p>
+      </div>
+
+      <fieldset class="needs">
+        <legend>What would help most? <span>(optional, pick any)</span></legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="needs" value="Home caregiver"><span>Home caregiver</span></label>
+          <label class="chip"><input type="checkbox" name="needs" value="Medicine reminders and orders"><span>Medicine reminders &amp; orders</span></label>
+          <label class="chip"><input type="checkbox" name="needs" value="Doctor consultation"><span>Doctor consults</span></label>
+          <label class="chip"><input type="checkbox" name="needs" value="Digital health card (all health data in one place)"><span>Digital health card</span></label>
+          <label class="chip"><input type="checkbox" name="needs" value="Weekly health report with health score"><span>Weekly health score</span></label>
+          <label class="chip"><input type="checkbox" name="needs" value="All reports in one place with AI insights"><span>AI report insights</span></label>
+          <label class="chip"><input type="checkbox" name="needs" value="Emergency SOS"><span>Emergency SOS</span></label>
+        </div>
+      </fieldset>
+
+      <div class="fgroup">
+        <label class="consent">
+          <input type="checkbox" id="ea-consent" name="consent" required aria-describedby="err-consent">
+          <span>I agree that ehealthix can contact me on WhatsApp, phone or email about early access.</span>
+        </label>
+        <p class="ferr" id="err-consent"></p>
+      </div>
+
+      <!-- spam trap: real people never see or fill this -->
+      <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
+
+      <button class="btn" id="ea-btn" type="submit">Join early access</button>
+      <p class="msg" id="ea-msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="fine">We'll only use these details to contact you about ehealthix early access. No spam, and you can ask us to delete them anytime.</p>
+  </section>
+</main>
+
+<script>
+/*
+  Sign-ups go to the Google Form "ehealthix early access sign-ups",
+  and from there into the linked Google Sheet of the same name.
+  If you ever rebuild the form, update the form URL and the entry numbers below.
+*/
+const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdH5pIyqALGQKKUnMLHid7TUyof7a5WtIl12Qh7oejzJElr3A/formResponse";
+const GOOGLE_FORM_FIELDS = {
+  name:         "entry.1651387865",
+  phone:        "entry.371378124",
+  email:        "entry.56725750",
+  wearable:     "entry.1787465221",
+  parents_area: "entry.232701015",
+  consent:      "entry.396508278",
+  source:       "entry.384344103",
+  caring_for:   "entry.1864490406",
+  you_live:     "entry.824005134",
+  needs:        "entry.183704862",
+  parent_age:   "entry.1041865220"
+};
+
+(function () {
+  const form = document.getElementById("early-form");
+  const btn = document.getElementById("ea-btn");
+  const msg = document.getElementById("ea-msg");
+  const f = {
+    name: document.getElementById("ea-name"),
+    phone: document.getElementById("ea-phone"),
+    email: document.getElementById("ea-email"),
+    caring: document.getElementById("ea-caring"),
+    area: document.getElementById("ea-area"),
+    age: document.getElementById("ea-age"),
+    live: document.getElementById("ea-live"),
+    wear: document.getElementById("ea-wear"),
+    consent: document.getElementById("ea-consent")
+  };
+
+  // Indian mobile: 10 digits starting 6-9, with optional +91 / 91 / 0 in front.
+  function normalisePhone(raw) {
+    let d = (raw || "").replace(/[\s\-().]/g, "");
+    if (/^\+91\d{10}$/.test(d)) d = d.slice(3);
+    else if (/^91\d{10}$/.test(d)) d = d.slice(2);
+    else if (/^0\d{10}$/.test(d)) d = d.slice(1);
+    return /^[6-9]\d{9}$/.test(d) ? "+91" + d : null;
+  }
+
+  const rules = {
+    name: () => {
+      const v = f.name.value.trim().replace(/\s+/g, " ");
+      if (!v) return "Please enter your name.";
+      if (v.length < 2) return "Name looks too short.";
+      if (!/^[A-Za-z\u0900-\u097F\u0C80-\u0CFF][A-Za-z\u0900-\u097F\u0C80-\u0CFF .'-]*$/.test(v)) return "Use letters only (no numbers or symbols).";
+      return "";
+    },
+    phone: () => {
+      if (!f.phone.value.trim()) return "Please enter your WhatsApp number.";
+      return normalisePhone(f.phone.value) ? "" : "Enter a valid 10-digit Indian mobile number.";
+    },
+    email: () => {
+      const v = f.email.value.trim();
+      if (!v) return "";
+      return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v) ? "" : "Enter a valid email, or leave it blank.";
+    },
+    caring: () => f.caring.value ? "" : "Please choose who you're caring for.",
+    area: () => f.area.value ? "" : "Please choose where they live.",
+    age: () => "",
+    live: () => f.live.value ? "" : "Please choose where you live.",
+    wear: () => "",
+    consent: () => f.consent.checked ? "" : "Please tick this so we can contact you."
+  };
+
+  function setError(key, text) {
+    const el = f[key];
+    const err = document.getElementById("err-" + key);
+    if (err) err.textContent = text;
+    if (text) el.setAttribute("aria-invalid", "true"); else el.removeAttribute("aria-invalid");
+    return !text;
+  }
+  function check(key) { return setError(key, rules[key]()); }
+
+  // validate a field when the person leaves it, and clear the error as soon as they fix it
+  Object.keys(f).forEach(function (key) {
+    const el = f[key];
+    const evt = (el.tagName === "SELECT" || el.type === "checkbox") ? "change" : "blur";
+    el.addEventListener(evt, function () { check(key); });
+    el.addEventListener("input", function () { if (el.getAttribute("aria-invalid")) check(key); });
+  });
+  // keep the phone box to digits, spaces, +, - only
+  f.phone.addEventListener("input", function () { f.phone.value = f.phone.value.replace(/[^\d+\s\-]/g, ""); });
+
+  function show(text, isErr) { msg.textContent = text; msg.className = "msg" + (isErr ? " err" : ""); }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (form.company.value) return; // bot
+
+    let firstBad = null;
+    Object.keys(f).forEach(function (key) { if (!check(key) && !firstBad) firstBad = f[key]; });
+    if (firstBad) { show("Please fix the highlighted fields.", true); firstBad.focus(); return; }
+
+    const needs = Array.from(form.querySelectorAll('input[name="needs"]:checked')).map(function (c) { return c.value; }).join(", ");
+    const values = {
+      name: f.name.value.trim().replace(/\s+/g, " "),
+      phone: normalisePhone(f.phone.value),
+      email: f.email.value.trim().toLowerCase(),
+      parents_area: f.area.value,
+      consent: "Yes",
+      source: new URLSearchParams(location.search).get("utm_source") || "website",
+      caring_for: f.caring.value,
+      you_live: f.live.value,
+      needs: needs,
+      parent_age: f.age.value,
+      wearable: f.wear.value
+    };
+    const body = new URLSearchParams();
+    Object.keys(GOOGLE_FORM_FIELDS).forEach(function (k) { body.append(GOOGLE_FORM_FIELDS[k], values[k] || ""); });
+
+    btn.disabled = true; btn.textContent = "Joining…"; show("");
+    try {
+      // Google Forms doesn't allow reading its reply from another site, so "no-cors" is required.
+      // The request still lands; a network failure is the only error we can see.
+      await fetch(GOOGLE_FORM_ACTION, { method: "POST", mode: "no-cors", body: body });
+      const lead = form.parentElement.querySelector(".early-lead");
+      if (lead) lead.remove();
+      form.outerHTML = '<div class="done" role="status"><strong>You\'re on the list 💙</strong><span>We\'ll message you on WhatsApp before ehealthix opens.</span></div>';
+    } catch (err) {
+      btn.disabled = false; btn.textContent = "Join early access";
+      show("Couldn't connect. Please check your internet and try again.", true);
+    }
+  });
+})();
+</script>
 </body>
 </html>
